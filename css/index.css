@@ -1,0 +1,6 @@
+@import url('./normal.css');
+body {
+  min-height: 100vh;
+  min-width: 1720px;
+  margin: 0 auto;
+}

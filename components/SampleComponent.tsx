@@ -27,6 +27,9 @@ const SampleComponent: React.FC<IOwnProps> = observer((props) => {
       <nav>
         <Link href={props.linkTo}>Navigate</Link>
       </nav>
+      <nav>
+        <Link href="/proxy">proxy</Link>
+      </nav>
     </div>
   )
 })

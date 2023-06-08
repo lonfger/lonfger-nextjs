@@ -12,7 +12,9 @@
     "mobx-state-tree": "^5.1.6",
     "next": "latest",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "sass": "^1.63.2",
+    "swr": "^2.1.5"
   },
   "devDependencies": {
     "@types/node": "^18.7.15",
