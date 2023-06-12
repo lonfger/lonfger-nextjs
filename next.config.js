@@ -27,6 +27,9 @@
 //   pageExtensions: ['js', 'jsx', 'tsx', 'md', 'mdx'],
 // })
 
+
+const StringReplacePlugin = require('string-replace-webpack-plugin');
+
 const withMDX = require('@next/mdx')({
   extension: /\.(mdx)?$/,
 
@@ -34,10 +37,30 @@ const withMDX = require('@next/mdx')({
 module.exports = withMDX({
   pageExtensions: ['js', 'jsx', 'tsx', 'mdx'],
   compress: process.env.NODE_ENV === 'production',
-  // images: {
-  //   unoptimized: true
-  // },
   env: {
     customKey: '1243'
-  }
+  },
+  webpack: (config, options) => {
+    config.module.
+      rules.push({
+        test: /\.(mdx|md)$/,
+        use: [
+          {
+            loader: StringReplacePlugin.replace({
+              replacements: [
+                {
+                  pattern: /<img[^>]*>(.*?<\/\1>)?/g,
+                  replacement: function (match, p1, offset, string) {
+                    return match
+                      .replace(/(\.\.\/)/g, '')
+                      .replace('assets/', "/imgs/");
+                  },
+                }
+              ],
+            }),
+          },
+        ],
+      },)
+    return config
+  },
 })

@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { initializeStore } from '../store'
 import styles from './index.module.scss'
 import { useRouter } from 'next/router'
+import img from 'assets/1.webp'
+import Image from 'next/image'
 
 
 
@@ -26,6 +28,7 @@ export default function Ssg(props) {
             <Link href='/user'>signal page</Link>
           </li>
           <li>{process.env.customKey}</li>
+          <li><Image src={img} alt="3232" /></li>
         </ul>
 
 
