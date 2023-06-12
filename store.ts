@@ -13,6 +13,7 @@ const Store = types
   .model({
     lastUpdate: types.Date,
     light: false,
+    name: types.string
   })
   .actions((self) => {
     let timer: any
@@ -28,11 +29,13 @@ const Store = types
     const update = () => {
       self.lastUpdate = new Date(Date.now())
       self.light = true
+      // self.name = '嘻嘻'
     }
     const stop = () => {
       clearInterval(timer)
     }
-    return { start, stop, update }
+    const updateName = (name) => self.name = name
+    return { start, stop, update, updateName }
   })
 
 export type IStore = Instance<typeof Store>
@@ -40,7 +43,7 @@ export type IStoreSnapshotIn = SnapshotIn<typeof Store>
 export type IStoreSnapshotOut = SnapshotOut<typeof Store>
 
 export function initializeStore(snapshot = null) {
-  const _store = store ?? Store.create({ lastUpdate: 0 })
+  const _store = store ?? Store.create({ lastUpdate: 0, name: '' })
 
   // If your page has Next.js data fetching methods that use a Mobx store, it will
   // get hydrated here, check `pages/ssg.tsx` and `pages/ssr.tsx` for more details

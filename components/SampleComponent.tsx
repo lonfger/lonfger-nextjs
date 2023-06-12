@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { observer } from 'mobx-react-lite'
 import Link from 'next/link'
 import { IStore, useStore } from '../store'
-import Clock from './Clock'
+// import Clock from './Clock'
 
 interface IOwnProps {
   store?: IStore
@@ -23,7 +23,7 @@ const SampleComponent: React.FC<IOwnProps> = observer((props) => {
   return (
     <div>
       <h1>{props.title}</h1>
-      <Clock lastUpdate={lastUpdate} light={light} />
+      {/* <Clock lastUpdate={lastUpdate} light={light} /> */}
       <nav>
         <Link href={props.linkTo}>Navigate</Link>
       </nav>

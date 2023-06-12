@@ -1,38 +1,35 @@
-const path = require('path')
-const { default: DevServer } = require('next/dist/server/dev/next-dev-server')
+// const path = require('path')
+// const { default: DevServer } = require('next/dist/server/dev/next-dev-server')
 
-module.exports = (phase, { defaultConfig }) => {
-  /**
-   * @type {import('next').NextConfig}
-   */
-  const nextConfig = {
-    ...defaultConfig,
-    // async rewrites() {
-    //   return [
-    //     {
-    //       source: '/api',
-    //       destination: 'https://ipapi.co/json/',
-    //     },
-    //   ]
-    // },
+// const withMDX = require('@next/mdx')({
+//   extension: /\.mdx?$/,
+//   options: {
+//     remarkPlugins: [],
+//     rehypePlugins: [],
+//   },
+//   sassOptions: {
+//     includePaths: [path.join(__dirname, 'styles')]
+//   },
+//   webpack: (config, options) => {
+//     config.devServer = {
+//       proxy: {
+//         '/json1/': {
+//           target: 'https://ipapi.co/',
+//           changeOrigin: true,
+//           pathRewrite: { '^/json1/': '/json/' },
+//         }
+//       },
+//     }
+//     return config
+//   },
+// })
+// module.exports = withMDX({
+//   pageExtensions: ['js', 'jsx', 'tsx', 'md', 'mdx'],
+// })
 
-    sassOptions: {
-      includePaths: [path.join(__dirname, 'styles')]
-    },
-    webpack: (config, options) => {
-      config.devServer = {
-        proxy: {
-          '/json1/': {
-            target: 'https://ipapi.co/',
-            changeOrigin: true,
-            pathRewrite: { '^/json1/': '/json/' },
-          }
-        },
-
-      }
-      return config
-    },
-  }
-
-  return nextConfig
-}
+const withMDX = require('@next/mdx')({
+  extension: /\.(mdx)?$/,
+})
+module.exports = withMDX({
+  pageExtensions: ['js', 'jsx', 'tsx', 'mdx'],
+})
