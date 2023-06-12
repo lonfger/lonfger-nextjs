@@ -29,7 +29,15 @@
 
 const withMDX = require('@next/mdx')({
   extension: /\.(mdx)?$/,
+
 })
 module.exports = withMDX({
   pageExtensions: ['js', 'jsx', 'tsx', 'mdx'],
+  compress: process.env.NODE_ENV === 'production',
+  // images: {
+  //   unoptimized: true
+  // },
+  env: {
+    customKey: '1243'
+  }
 })

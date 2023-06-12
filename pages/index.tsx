@@ -25,6 +25,7 @@ export default function Ssg(props) {
           <li>
             <Link href='/user'>signal page</Link>
           </li>
+          <li>{process.env.customKey}</li>
         </ul>
 
 
