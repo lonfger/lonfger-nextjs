@@ -1,13 +1,16 @@
 import { getSnapshot } from 'mobx-state-tree'
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import Image from 'next/image'
+import {createPortal} from 'react-dom'
+import React, { useCallback } from 'react'
 
 import { initializeStore } from '../store'
 import styles from './index.module.scss'
-import { useRouter } from 'next/router'
-import img from 'assets/1.webp'
-import Image from 'next/image'
 
+import img from 'assets/1.webp'
+import Modal from 'components/Modal'
 
 
 export default function Ssg(props) {
@@ -18,7 +21,7 @@ export default function Ssg(props) {
     <main {...props} >
       <div className={styles.wrap}>
         <ul>
-          <li>
+                <li>
             <Link href='/mdx-test'>mdx-test</Link>
           </li>
           <li>
@@ -27,14 +30,19 @@ export default function Ssg(props) {
           <li>
             <Link href='/user'>signal page</Link>
           </li>
+          <li>
+            <Link href='/proxy'>proxy page</Link>
+          </li>
+          <li>
+            <Link href='/components'>user</Link>
+          </li>
           <li>{process.env.customKey}</li>
           <li><Image src={img} alt="3232" /></li>
         </ul>
 
-
-
+        <li>
+        </li>
       </div>
-
     </main>
   )
 }

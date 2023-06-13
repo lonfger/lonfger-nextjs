@@ -41,6 +41,22 @@ module.exports = withMDX({
     customKey: '1243'
   },
   webpack: (config, options) => {
+    config.devServer = {
+      port: '3000',
+      client: {
+        overlay: {
+          errors: true,
+          warnings: false,
+        },
+      },
+      proxy: {
+        '/apipdf/': {
+          target: 'https://pdf.easeus.com',
+          changeOrigin: true,
+          pathRewrite: { '^/apipdf/': '/api/' },
+        },
+      },
+    }
     config.module.
       rules.push({
         test: /\.(mdx|md)$/,
