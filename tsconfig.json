@@ -19,6 +19,8 @@
       "@/components/*": ["components/*"],
       "@/css/*": ["css/*"],
       "@/assets/*": ["assets/*"],
+      "@/store/*": ["store/*"],
+      "@/utils/*": ["utils/*"],
     }
   },
   "exclude": ["node_modules"],

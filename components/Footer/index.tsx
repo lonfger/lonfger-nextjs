@@ -1,13 +1,6 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import styles from './index.module.scss'
-export default (props: InferGetStaticPropsType<typeof getStaticProps>) => {
+import { observer } from 'mobx-react-lite'
+export default observer((props) => {
   return <div className={styles.footer}>footer</div>
-}
-
-export const getStaticProps: GetStaticProps = async() => {
-  return {
-    props: {
-      name: 'header'
-    }
-  }
-}
+})
