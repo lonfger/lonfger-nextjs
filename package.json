@@ -7,6 +7,7 @@
     "export": "next build && next export"
   },
   "dependencies": {
+    "@fingerprintjs/fingerprintjs": "^3.4.1",
     "@mdx-js/loader": "^2.3.0",
     "@mdx-js/react": "^2.3.0",
     "@next/mdx": "^13.4.4",
@@ -25,6 +26,7 @@
   "devDependencies": {
     "@types/node": "^18.7.15",
     "@types/react": "^18.0.18",
-    "typescript": "^4.8.2"
+    "typescript": "^4.8.2",
+    "user-agent-data-types": "^0.3.1"
   }
 }

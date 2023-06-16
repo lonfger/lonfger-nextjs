@@ -20,7 +20,8 @@ export function initializeStore(snapshotData: IStoreSnapshotIn) {
     user: User.create({
       account: 'longfengz@foxmail.com',
       nickName: 'lonfger',
-      gender: 'female'
+      gender: 'female',
+      login: false
     }),
     activate: Activate.create({
       active: false,
