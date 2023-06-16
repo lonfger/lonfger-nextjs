@@ -8,7 +8,7 @@ import './index.css'
 
 export default observer((props) => {
   const {user, activate} = useStore()
-  return <div className="header">
+  return <div className={styles.header}>
     {user.account}__{user.nickName} login status: {user.login ? 1 : 0}
     <p>
       {activate.active ? `${activate.active}_${activate.activateType}` : 'buy now'}

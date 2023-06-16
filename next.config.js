@@ -46,19 +46,19 @@ module.exports = withMDX({
           },
         ],
       })
-    config.module.rules.push({
-      test: /\.(c|sc|sa)ss$/i,
-      use: [
-        {
-          loader: 'style-loader',
-          options: { injectType: 'styleTag' }
-        },
-        {
-          loader: 'css-loader'
-        },
-        'sass-loader'
-      ]
-    })
+    // config.module.rules.push({
+    //   test: /\.(c|sc|sa)ss$/i,
+    //   use: [
+    //     {
+    //       loader: 'style-loader',
+    //       options: { injectType: 'styleTag' }
+    //     },
+    //     {
+    //       loader: 'css-loader'
+    //     },
+    //     'sass-loader'
+    //   ]
+    // })
     return config
   },
 })
