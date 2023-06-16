@@ -4,7 +4,7 @@ import styles from './index.module.scss'
 import { useStore } from "@/store/index"
 import { observer } from "mobx-react-lite"
 import { createPortal } from "react-dom"
-import './index.css'
+
 
 export default observer((props) => {
   const {user, activate} = useStore()
