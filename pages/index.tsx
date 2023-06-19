@@ -1,7 +1,7 @@
 import { getSnapshot } from 'mobx-state-tree'
 import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import {createPortal} from 'react-dom'
 
 import { initializeStore } from '../store'
@@ -21,6 +21,11 @@ export default observer(props => {
     getUUID()
   },[])
 
+  const nickName = useMemo(() => user.nickName, [user.nickName])
+  useEffect(() => {
+    console.log('login', user.login)
+  }, [user.login])
+
 
   return (
     <main {...props} >
@@ -28,9 +33,6 @@ export default observer(props => {
       <button onClick={() => activate.updateStatus('year')}>update activate</button>
       <button onClick={() => {test('month')}}> test update store in utils { user.login.toString()}</button>
       <button onClick={() =>  router.push('/user')}>user</button>
-      <button onClick={() => {
-        setModal(showLoginModal())
-      }}>show modal</button>
       <button onClick={() => modal && modal.hide()}>hide modal</button>
 
     </main>

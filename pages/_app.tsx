@@ -5,6 +5,7 @@ import { useStore } from 'store/index'
 import { Layout } from '../components'
 import '../css/index.css'
 import Modal from '@/components/Modal'
+import Auth from '@/components/Auth'
 
 export default function App({ Component, pageProps }) {
   const store = useStore()
@@ -12,9 +13,11 @@ export default function App({ Component, pageProps }) {
   return (
     <MDXProvider components={{}}>
       <Provider store={store}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <Auth>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </Auth>
       </Provider>
     </MDXProvider>
 
