@@ -1,0 +1,5 @@
+{
+  "welcome": "English welcome",
+  "author": "Author is: lonfger",
+  "time": "time is {{time, DD/MM/YYYY}}"
+}

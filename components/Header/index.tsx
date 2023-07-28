@@ -1,9 +1,9 @@
 
-import styles from './index.module.scss'
 import { useStore } from "@/store/index"
 import { observer } from "mobx-react-lite"
 import Head from 'next/head'
 import Link from "next/link"
+import styles from './index.module.scss'
 
 
 

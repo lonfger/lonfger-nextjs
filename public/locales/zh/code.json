@@ -1,0 +1,5 @@
+{
+  "welcome": "欢迎来到我的网站",
+  "author": "作者是：龙凤珠",
+  "time": "当前时间是 {{time, DD-MM-YYYY}}"
+}

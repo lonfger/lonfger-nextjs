@@ -1,20 +1,18 @@
-import { getSnapshot } from 'mobx-state-tree'
-import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
-import {createPortal} from 'react-dom'
+import { useEffect, useMemo, useState } from 'react'
 
-import { initializeStore } from '../store'
+import i18n from '@/utils/i18n'
 import { observer } from 'mobx-react'
-import {useStore} from 'store/index'
-import { getLocation, getUUID, showLoginModal, test } from 'utils/index'
-import Modal from '@/components/Modal'
+import { Trans, useTranslation } from 'react-i18next'
+import { useStore } from 'store/index'
+import { getLocation, getUUID } from 'utils/index'
 
 export default observer(props => {
   const router = useRouter()
   const {pid} = router.query
   const {user, activate} = useStore()
   const [modal, setModal] = useState(null)
+  const {t} = useTranslation()
 
   useEffect(() => {
     getLocation()
@@ -26,14 +24,33 @@ export default observer(props => {
     console.log('login', user.login)
   }, [user.login])
 
+  const lngs = {
+    en: { nativeName: 'English' },
+    zh: { nativeName: '中文' }
+  };
+
 
   return (
     <main {...props} >
-      <button onClick={() => user.updateNickName('xixi')}>update nickname</button>
+       <select onChange={(evt) => {
+          i18n.changeLanguage(evt.target.value)
+        }}>
+          {Object.keys(lngs).map((lng) => (
+            <option key={lng} value={lng} label={lngs[lng].nativeName}
+              style={{ fontWeight: i18n.resolvedLanguage === lng ? 'bold' : 'normal' }} />
+          ))}
+        </select>
+        <p>{t('welcome')}--------------------</p>
+        <p>{t('time', { time: new Date() })}</p>
+
+        <Trans i18nKey="author">
+        </Trans>
+
+      {/* <button onClick={() => user.updateNickName('xixi')}>update nickname</button>
       <button onClick={() => activate.updateStatus('year')}>update activate</button>
       <button onClick={() => {test('month')}}> test update store in utils { user.login.toString()}</button>
       <button onClick={() =>  router.push('/user')}>user</button>
-      <button onClick={() => modal && modal.hide()}>hide modal</button>
+      <button onClick={() => modal && modal.hide()}>hide modal</button> */}
 
     </main>
   )
