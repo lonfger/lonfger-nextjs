@@ -9,6 +9,16 @@ module.exports = withMDX({
   env: {
     customKey: '1243'
   },
+  async rewrites(){
+    return {
+      fallback: [
+        {
+          source: '/:api*',
+          destination: 'https://testserver.easeus.com:44339/:api*'
+        }
+      ]
+    }
+  },
   webpack: (config, options) => {
     config.devServer = {
       port: '3000',
