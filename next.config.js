@@ -9,6 +9,12 @@ module.exports = withMDX({
   env: {
     customKey: '1243'
   },
+  publicRuntimeConfig: {
+    env: {
+      S3_KEY: process.env.photoenhancer_S3_KEY,
+      S3_SECRET: process.env.photoenhancer_S3_KEY
+    }
+  },
   async rewrites(){
     return {
       fallback: [

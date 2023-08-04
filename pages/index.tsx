@@ -3,6 +3,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import axios from 'axios'
 import { observer } from 'mobx-react'
+import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 import { useStore } from 'store/index'
 import { getLocation, getUUID } from 'utils/index'
@@ -68,6 +69,7 @@ export default observer(props => {
 
   return (
     <main {...props} >
+      <Link href="/dynamicVaribles">环境变量</Link>
        {/* <select onChange={(evt) => {
           i18n.changeLanguage(evt.target.value)
         }}>
