@@ -2,7 +2,9 @@
   "private": true,
   "scripts": {
     "dev": "next",
-    "build": "next build",
+    "build:test": "next build",
+    "build:prod": "next build",
+    "build:prev": "next build",
     "start": "next start",
     "export": "next build && next export"
   },

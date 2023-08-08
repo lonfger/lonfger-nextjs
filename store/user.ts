@@ -5,7 +5,8 @@ export default types
   account: types.string,
   nickName: types.string,
   gender: types.union(types.literal('male'), types.literal('female')),
-  login: types.boolean
+  login: types.boolean,
+  list: types.array(types.number)
 })
 .actions((self) => ({
   updateNickName(newName: string){
@@ -18,5 +19,9 @@ export default types
   updateLoginStatus(status: boolean) {
     console.log(status)
     self.login = status
+  },
+  updateList(arr){
+    console.log('update list', arr)
+    self.list = arr
   }
 }))

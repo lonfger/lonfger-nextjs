@@ -1,29 +1,29 @@
 import { useRouter } from 'next/router'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
+import Array from '@/components/Array'
+import { IStore } from '@/store/index'
 import axios from 'axios'
-import { observer } from 'mobx-react'
+import { inject, observer } from 'mobx-react'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
-import { useStore } from 'store/index'
 import { getLocation, getUUID } from 'utils/index'
+import styles from './index.module.scss'
 
-export default observer(props => {
+export default inject('user')(observer((props: {user: IStore['user']}) => {
   const router = useRouter()
   const {pid} = router.query
-  const {user, activate} = useStore()
   const [modal, setModal] = useState(null)
   const {t} = useTranslation()
+  const {user} = props
 
   useEffect(() => {
     getLocation()
     getUUID()
   },[])
 
-  const nickName = useMemo(() => user.nickName, [user.nickName])
   useEffect(() => {
     console.log('login', user.login)
-
     test()
 
   }, [user.login])
@@ -66,10 +66,23 @@ export default observer(props => {
 
   },[])
 
+  const handleClick = e => {
+    console.log(e.nativeEvent.offsetX)
+    user.updateList([1,2,3])
+  }
 
+  useEffect(() => {
+    console.log(user.list)
+  },[user.list])
   return (
     <main {...props} >
       <Link href="/dynamicVaribles">环境变量</Link>
+
+      <div className={styles.parent} onClick={e => handleClick(e)}>
+        update list
+      </div>
+      <Array list={user.list} />
+
        {/* <select onChange={(evt) => {
           i18n.changeLanguage(evt.target.value)
         }}>
@@ -92,4 +105,4 @@ export default observer(props => {
 
     </main>
   )
-})
+}))

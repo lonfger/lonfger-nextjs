@@ -1,14 +1,14 @@
 
-import { useStore } from "@/store/index"
+import { IStore, useStore } from "@/store/index"
+import { inject } from "mobx-react"
 import { observer } from "mobx-react-lite"
 import Head from 'next/head'
 import Link from "next/link"
 import styles from './index.module.scss'
 
 
-
-export default observer((props) => {
-  const { user, activate } = useStore()
+export default inject('user')(observer(({user}: {user: IStore['user']}) => {
+  const {  activate } = useStore()
   return (
     <>
       <Head>
@@ -59,4 +59,4 @@ export default observer((props) => {
     </>
 
   )
-})
+}))

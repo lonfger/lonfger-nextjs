@@ -9,6 +9,7 @@ module.exports = withMDX({
   env: {
     customKey: '1243'
   },
+  swcMinify: true,
   publicRuntimeConfig: {
     env: {
       S3_KEY: process.env.photoenhancer_S3_KEY,
